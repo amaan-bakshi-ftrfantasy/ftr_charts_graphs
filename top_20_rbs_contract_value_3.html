@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Top 20 Running Backs by Contract Value</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        canvas {
+            margin: 20px auto;
+            max-width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Top 20 Running Backs by Contract Value</h1>
+    <canvas id="topRBsChart"></canvas>
+    <script>
+        new Chart(document.getElementById('topRBsChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Aaron Jones', 'Najee Harris', 'Jeff Wilson', 'A.J. Dillon', 'Nick Chubb', 'Javonte Williams', 'Travis Homer', 'Alexander Mattison', 'Ezekiel Elliott', 'Nyheim Miller-Hines', 'Ameer Abdullah', 'JK Dobbins', 'Chase Edmonds', 'Dare Ogunbowale', 'Samaje Perine', 'JaMycal Hasty', 'Ty Johnson', 'D’Ernest Johnson', 'Rico Dowdle', 'Cam Akers'],
+                datasets: [{
+                    label: 'Contract Value (in $)',
+                    data: [7000000.0, 3261862.0, 3000000.0, 2742500.0, 2275000.0, 2216438.0, 2000000.0, 2000000.0, 2000000.0, 1995000.0, 1850000.0, 1610000.0, 1500000.0, 1500000.0, 1500000.0, 1450000.0, 1292500.0, 1275000.0, 1255000.0, 1175000.0],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return '$' + tooltipItem.raw.toLocaleString();
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Contract Value ($)'
+                        }
+                    },
+                    x: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

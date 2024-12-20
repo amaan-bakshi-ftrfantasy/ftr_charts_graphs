@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Top 10 Quarterbacks by Contract Value</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        canvas {
+            margin: 20px auto;
+            max-width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Top 10 Quarterbacks by Contract Value</h1>
+    <canvas id="topQBsChart"></canvas>
+    <script>
+        new Chart(document.getElementById('topQBsChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Sam Darnold', 'Zach Wilson', 'Trey Lance', 'Jacoby Brissett', 'Taylor Heinicke', 'Marcus Mariota', 'Jarrett Stidham', 'Andy Dalton', 'Drew Lock', 'Justin Fields'],
+                datasets: [{
+                    label: 'Contract Value (in $)',
+                    data: [10000000.0, 8787670.0, 8526319.0, 8000000.0, 7000000.0, 6000000.0, 5000000.0, 5000000.0, 5000000.0, 4717989.0],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return '$' + tooltipItem.raw.toLocaleString();
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Contract Value ($)'
+                        }
+                    },
+                    x: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Top 20 Wide Receivers by Contract Value</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        canvas {
+            margin: 20px auto;
+            max-width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Top 20 Wide Receivers by Contract Value</h1>
+    <canvas id="topWRsChart"></canvas>
+    <script>
+        new Chart(document.getElementById('topWRsChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Stefon Diggs', 'Tee Higgins', 'Keenan Allen', 'Amari Cooper', 'Chris Godwin', 'Brandin Cooks', 'Diontae Johnson', 'DeAndre Hopkins', 'Mike Williams', 'Robert Woods', 'Marquise Brown', 'Darius Slayton', 'Demarcus Robinson', 'K.J. Osborn', 'Nelson Agholor', 'Ashton Dulin', 'DJ Chark', 'Mack Hollins', 'Tyler Boyd', 'Zach Pascal'],
+                datasets: [{
+                    label: 'Contract Value (in $)',
+                    data: [22520000.0, 21816000.0, 20025000.0, 20000000.0, 20000000.0, 19882000.0, 18355000.0, 13000000.0, 10000000.0, 7625000.0, 7000000.0, 6000000.0, 4000000.0, 4000000.0, 3750000.0, 3600000.0, 3000000.0, 2600000.0, 2400000.0, 2250000.0],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return '$' + tooltipItem.raw.toLocaleString();
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Contract Value ($)'
+                        }
+                    },
+                    x: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
